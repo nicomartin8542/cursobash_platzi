@@ -55,26 +55,29 @@ do
          7) 
             numero=0
             echo -e "\n"
-            read -p "Ingrese el path a realizar el backup: " backup
-            if [ -d $backup ]; then
+            read -p "Ingrese el path a realizar el backup (No colocar / al principio): " backup
+            if [ -d "/$backup" ]; then
                
-               while [ $numero -le 100 ]
-               do 
-                  sleep 0.1
-                  echo -ne "\r\rRealizando backup... ###############[$numero%]" 
-                  numero=$((numero + 1))
-                  
-               done   
-               echo -e "\nEl backup se realizo con exito"
+               #while [ $numero -le 100 ]
+               #do 
+               #   sleep 0.1
+               #   echo -ne "\r\rRealizando backup... ###############[$numero%]" 
+               #   numero=$((numero + 1))
+               #   
+               #done  
+               
+               sudo ./utilityHost.sh "/$backup"
+
+               #echo -e "\nEl backup se realizo con exito"
             else  
-               echo -e "\nEl path es invalido..."
+               echo -e "\nEl path es invalido..."1
             fi
             sleep 3 ;; 
          8) echo -e "\n\nSalir del programa.."
             exit 0 ;;
 
-         *) echo -e  "\n\nOpcion no valida "   | lolcat
-            sleep 2
+         *) echo -e  "\n\nOpcion no valida "   
+            
     esac
 done        
 
